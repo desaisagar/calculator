@@ -11,7 +11,7 @@ class Calculator
      * Addition of given string with numbers
      * 
      * @param string $data The data
-     * @return int
+     * @return int The integer value
      */
     public function add($data)
     {
@@ -26,13 +26,15 @@ class Calculator
      * Build array of given string
      * 
      * @param string $data The data
-     * @return array
+     * @return array The array contains numbers
      */
     private function buildArray($data)
     {
         if (empty($data)) {
             return 0;
         }
+
+        $data = str_replace(["\\n", "\n", "n"], ",", $data);
 
         $numbers = explode(',', $data);
 

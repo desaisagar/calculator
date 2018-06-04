@@ -42,6 +42,14 @@ class CalculatorTest extends TestCase
     }
 
     /**
+     * Test sum with numbers including new line delimeter
+     */
+    public function testNumbersWithNewLineDelimeter()
+    {
+        $this->assertEquals(9, $this->calculator->add('2\n3,4'));
+    }
+
+    /**
      * Data provider for sum from 0 to 2 numbers
      */
     public function dataForSumFromZeroToTwoNumbers()
