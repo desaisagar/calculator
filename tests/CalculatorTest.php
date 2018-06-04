@@ -60,6 +60,16 @@ class CalculatorTest extends TestCase
     }
 
     /**
+     * Test sume of negative numbers should throw exception
+     *
+     * @expectedException InvalidArgumentException
+     */
+    public function testSumOfNegativeNumberShouldThrowException()
+    {
+        $this->calculator->add('\\,\\2,7,-3,5,-2');
+    }
+
+    /**
      * Data provider for sum from 0 to 2 numbers
      */
     public function dataForSumFromZeroToTwoNumbers()

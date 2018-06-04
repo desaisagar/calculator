@@ -27,6 +27,7 @@ class Calculator
      * 
      * @param string $data The data
      * @return array The array contains numbers
+     * @throws \InvalidArgumentException
      */
     private function buildArray($data)
     {
@@ -36,8 +37,11 @@ class Calculator
 
         $delimiters = ["\\n", "\n", "n", "\\", "\\;", ";"];
         $data = str_replace($delimiters, ",", $data);
+        $numbers = array_map('intval', explode(',', $data));
 
-        $numbers = explode(',', $data);
+        if (min($numbers) < 0) {
+            throw new \InvalidArgumentException("Negative numbers not allowed", 1528100877);
+        }
 
         return $numbers;
     }

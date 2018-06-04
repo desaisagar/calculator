@@ -12,9 +12,13 @@ if (!isset($argv[1])) {
 
 $data = $argv[2] ?? '';
 
-if (strtolower($argv[1]) === 'sum') {
-    $output = $calculator->add($data);
-} else {
-    $output = 'Please provide valid operator, "sum"';
+try {
+    if (strtolower($argv[1]) === 'sum') {
+        $output = $calculator->add($data);
+    } else {
+        $output = 'Please provide valid operator, "sum"';
+    }
+    echo $output . PHP_EOL;
+} catch (\InvalidArgumentException $e) {
+    echo "Error: " . $e->getMessage() . PHP_EOL;
 }
-echo $output . PHP_EOL;
