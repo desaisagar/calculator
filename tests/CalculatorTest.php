@@ -60,13 +60,23 @@ class CalculatorTest extends TestCase
     }
 
     /**
-     * Test sume of negative numbers should throw exception
+     * Test sum of negative numbers should throw exception
      *
      * @expectedException InvalidArgumentException
      */
     public function testSumOfNegativeNumberShouldThrowException()
     {
         $this->calculator->add('\\,\\2,7,-3,5,-2');
+    }
+
+    /**
+     * Test multiplilcation of numbers
+     * 
+     * @dataProvider dataForProduct
+     */
+    public function testMultiplicationOfNumbers($data, $product)
+    {
+        $this->assertEquals($product, $this->calculator->multiply($data));
     }
 
     /**
@@ -104,6 +114,20 @@ class CalculatorTest extends TestCase
     {
         return [
             ['\\;\\3;4;5', 12]
+        ];
+    }
+
+    /**
+     * Data provider for product
+     */
+    public function dataForProduct()
+    {
+        return [
+            ['', 0],
+            ['1', 1],
+            ['2,3', 6],
+            ['2\n3', 6],
+            ['\\;\\3;4;5', 60]
         ];
     }
 }

@@ -23,6 +23,21 @@ class Calculator
     }
 
     /**
+     * Multiplication of given string with nunmbers
+     *
+     * @param string $data The data
+     * @return int The integer value
+     */
+    public function multiply($data)
+    {
+        $numbers = $this->buildArray($data);
+        if (is_array($numbers)) {
+            return array_product($numbers);
+        }
+        return $numbers;
+    }
+
+    /**
      * Build array of given string
      * 
      * @param string $data The data
@@ -37,7 +52,7 @@ class Calculator
 
         $delimiters = ["\\n", "\n", "n", "\\", "\\;", ";"];
         $data = str_replace($delimiters, ",", $data);
-        $numbers = array_map('intval', explode(',', $data));
+        $numbers = array_map('intval', array_filter(explode(',', $data)));
 
         if (min($numbers) < 0) {
             $negative = array_filter($numbers, function($x) {
