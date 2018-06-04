@@ -40,7 +40,10 @@ class Calculator
         $numbers = array_map('intval', explode(',', $data));
 
         if (min($numbers) < 0) {
-            throw new \InvalidArgumentException("Negative numbers not allowed", 1528100877);
+            $negative = array_filter($numbers, function($x) {
+                return $x < 0;
+            });
+            throw new \InvalidArgumentException("Negative numbers (".implode(',', $negative).") not allowed", 1528100877);
         }
 
         return $numbers;
