@@ -46,6 +46,10 @@ class Calculator
             throw new \InvalidArgumentException("Negative numbers (".implode(',', $negative).") not allowed", 1528100877);
         }
 
+        $numbers = array_filter($numbers, function($number) {
+            return $number < 1000;
+        });
+
         return $numbers;
     }
 }
