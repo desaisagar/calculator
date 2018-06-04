@@ -50,6 +50,16 @@ class CalculatorTest extends TestCase
     }
 
     /**
+     * Test sum of numbers including delimiters
+     * 
+     * @dataProvider dataForSumWithDelimiters
+     */
+    public function testSumOfNumbersIncludingDelimiters($data, $sum)
+    {
+        $this->assertEquals($sum, $this->calculator->add($data));
+    }
+
+    /**
      * Data provider for sum from 0 to 2 numbers
      */
     public function dataForSumFromZeroToTwoNumbers()
@@ -73,6 +83,16 @@ class CalculatorTest extends TestCase
             ['4,5,6', 15],
             ['2,3,4,5', 14],
             ['4,7,3,4,7,3,5,6,7,4,3,2,5,7,5,3,4,6,7,8,9,5,5,5,4,3,2', 133]
+        ];
+    }
+
+    /**
+     * Data provider for sum with delimiters
+     */
+    public function dataForSumWithDelimiters()
+    {
+        return [
+            ['\\;\\3;4;5', 12]
         ];
     }
 }

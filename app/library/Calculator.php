@@ -34,7 +34,8 @@ class Calculator
             return 0;
         }
 
-        $data = str_replace(["\\n", "\n", "n"], ",", $data);
+        $delimiters = ["\\n", "\n", "n", "\\", "\\;", ";"];
+        $data = str_replace($delimiters, ",", $data);
 
         $numbers = explode(',', $data);
 
