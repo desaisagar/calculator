@@ -23,38 +23,44 @@ class CalculatorTest extends TestCase
 
     /**
      * Test sum zero to two numbers
-     * 
+     *
+     * @param string $data
+     * @param int $sum
      * @dataProvider dataForSumFromZeroToTwoNumbers
      */
-    public function testSumtZeroToTwoNumbers($data, $sum)
+    public function testSumZeroToTwoNumbers(string $data, int $sum)
     {
         $this->assertEquals($sum, $this->calculator->add($data));
     }
 
     /**
-     * Test sum with o to multple numbers
+     * Test sum with o to multiple numbers
      *
+     * @param string $data
+     * @param int $sum
      * @dataProvider dataForSumWithMultipleNumbers
      */
-    public function testSumtZeroToMultipleNumbers($data, $sum)
+    public function testSumZeroToMultipleNumbers(string $data, int $sum)
     {
         $this->assertEquals($sum, $this->calculator->add($data));
     }
 
     /**
-     * Test sum with numbers including new line delimeter
+     * Test sum with numbers including new line delimiter
      */
-    public function testNumbersWithNewLineDelimeter()
+    public function testNumbersWithNewLineDelimiter()
     {
         $this->assertEquals(9, $this->calculator->add('2\n3,4'));
     }
 
     /**
      * Test sum of numbers including delimiters
-     * 
+     *
+     * @param string $data
+     * @param int $sum
      * @dataProvider dataForSumWithDelimiters
      */
-    public function testSumOfNumbersIncludingDelimiters($data, $sum)
+    public function testSumOfNumbersIncludingDelimiters(string $data, int $sum)
     {
         $this->assertEquals($sum, $this->calculator->add($data));
     }
